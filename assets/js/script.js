@@ -12,7 +12,7 @@ let count = 0;
 
 let data = prompt('Adinizi daxil edin:', 'Player1');
 
-localStorage.removeItem('points');
+// localStorage.removeItem('points');
 
 onkeydown = barMove;
 let set = setInterval(ballMove, 40);
@@ -82,6 +82,8 @@ function ballMove() {
 
 
 function localAdd() {
+    console.log('test');
+    
     let points;
     if (localStorage.getItem('points') === null) {
         points = [];
@@ -100,16 +102,23 @@ function localAdd() {
 function table() {
     let dataAll = [];
     dataAll = JSON.parse(localStorage.getItem('points'));
+    if(dataAll === null){
+        dataAll = [];
+    }
     let tr = `<tr>
     <td> Name </td>
     <td> Point </td>
     </tr>`
+   
     for (let i = 0; i < dataAll.length; i++) {
         tr += `<tr>
                 <td> ${dataAll[i][0]} </td>
                 <td> ${dataAll[i][1]} </td>
                 </tr>`
     }
+
+    
+    
 
 
 
